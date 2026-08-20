@@ -90,9 +90,21 @@ name for the rest of this skill.
 7. The round shapes the deck and is mandatory. Always ask who the interviewer is — never infer their
    absence from silence; people usually know a name and won't think to volunteer it, and a name is
    what unlocks the dossier. Fold this into ONE combined question: round number, interviewer name(s)
-   with an explicit "don't know yet" option, and anything else you're missing — never a series of
-   separate prompts. Skip whatever's already been stated. Interview format (phone/video/onsite/panel)
-   stays optional — take it if offered, never chase it.
+   with an explicit "don't know yet" option, the interview type from the lettered list below, and
+   anything else you're missing — never a series of separate prompts. Flag exactly one type letter
+   as recommended, keyed to the round: round 1 → A, round 2 → B, later rounds → judgment from
+   what's known. Skip whatever's already been stated — "prep me for my recruiter screen" has
+   already answered the type. The medium (phone/video/onsite) stays optional — take it if
+   offered, never chase it.
+
+   The type list, each with the deck emphasis it buys:
+   - **A · Recruiter screen** — logistics, salary story, the arc of "why this move," crisp company knowledge
+   - **B · Hiring manager** — STAR depth, how you'd own the work, team fit, name your gaps before they do
+   - **C · Peer / panel** — collaboration stories, retellings that stay consistent, a question for each seat
+   - **D · Technical / skills deep-dive** — the evidence behind every skills claim, walkthroughs of real work
+   - **E · Case study / take-home debrief** — defend your choices, the tradeoffs, what you'd do with more time
+   - **F · Executive / final** — vision, judgment, questions back that show range
+   - **G · Other / not sure** — the user describes it, or the deck stays generic to the round
 8. Determine the round number N from what's stated or implied ("round 2", "final round" — ask if
    genuinely ambiguous). Glob `{{APPLICATIONS_ROOT}}/<application folder>/interview-prep*.html` to
    see which rounds already have decks, confirming N really is next.
@@ -125,9 +137,10 @@ name for the rest of this skill.
     in one line of the dossier's uncertainty register (step 15) and move on. Prefer the company's own
     site, published writing, and conference bios — primary sources for employment and point of view
     anyway. Named interviewers also shape the deck: their probable questions become cards in step 17.
-13. No interviewer name → the company brief is the entire research layer, and the deck is generic to
-    the round. Say so plainly in the wrap-up, and note that re-running later with a name adds the
-    dossier without redoing anything else.
+13. No interviewer name → the company brief is the entire research layer, and the deck takes its
+    emphasis from the interview type chosen in step 7 instead of a dossier — only type G falls back
+    to generic-to-the-round. Say so plainly in the wrap-up, and note that re-running later with a
+    name adds the dossier without redoing anything else.
 
 ## company-context.md — additive, never rewritten
 
@@ -150,7 +163,10 @@ name for the rest of this skill.
 17. Every talking point draws only from `tailored-resume.md`, plus this application's own
     `job-post.md`, any `research/` dossier built in steps 11-12, and the optional `career-notes.md`
     from step 6 where it exists. Never fabricate a claim to cover a JD keyword with no honest match —
-    name the gap instead. Write to the filename fixed in step 9.
+    name the gap instead. Weight the card mix by the interview type's emphasis line from step 7,
+    and show the type in the deck header beside the round. A named interviewer sharpens the deck
+    further — the dossier's probable questions and the type's defaults compose; they don't compete.
+    Write to the filename fixed in step 9.
 18. Verify it renders before handing it over. The deck is interactive, self-contained HTML — confirm
     the cards actually flip and the reference panels expand, by opening it in a browser or serving
     the folder locally. A deck that looks right in source and dies on click is worse than no deck.
@@ -173,7 +189,7 @@ name for the rest of this skill.
 ## Wrap
 
 20. Summarize: which application folder (and whether it was created prep-only this run), which
-    round, the filename just written, whether a prior
+    round and interview type, the filename just written, whether a prior
     debrief changed round-N emphasis (round 2+), whether `company-context.md` was created or appended
     to, whether the research layer fired and on whom, whether any STAR detail was requested and saved
     to `career-notes.md`, and the self-check findings from step 19, split into its two groups.
