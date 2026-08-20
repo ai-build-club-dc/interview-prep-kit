@@ -42,9 +42,10 @@ git clone https://github.com/ai-build-club-dc/interview-prep-kit.git
 cp -r interview-prep-kit/skills/interview-prep ~/.claude/skills/
 ```
 
-Then open `~/.claude/skills/interview-prep/SKILL.md` and replace the `{{APPLICATIONS_ROOT}}`
-placeholder near the top with the path to your applications folder. That's the only setup. Nothing
-substitutes that placeholder for you — you're editing the text by hand, once.
+Then open `~/.claude/skills/interview-prep/SKILL.md` and set the **Applications root** bullet in
+its Configuration section to the path of your applications folder — no trailing slash. (Using the
+job-scan-console workshop repo? That's `<your clone>/applications`.) That's the only setup. Nothing
+sets it for you — you're editing the text by hand, once.
 
 ## Use
 
