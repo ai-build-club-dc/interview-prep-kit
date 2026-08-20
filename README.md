@@ -38,7 +38,7 @@ than replacing it.
 ## Install
 
 ```bash
-git clone https://github.com/<you>/interview-prep-kit.git
+git clone https://github.com/ai-build-club-dc/interview-prep-kit.git
 cp -r interview-prep-kit/skills/interview-prep ~/.claude/skills/
 ```
 
