@@ -1,6 +1,6 @@
 ---
 name: interview-prep
-description: Build round-aware interview prep for a scheduled interview — a company/interviewer research brief plus an interactive HTML flip-card deck — without ever overwriting an earlier round's materials. Use when someone has an upcoming interview and names a specific round to prep for (e.g. "I have an interview Thursday", "help me prep for the second round with Acme", "build my interview deck for the onsite"). Not for general job-search chatter, resume work, or applications with no interview scheduled.
+description: Build round-aware interview prep for a scheduled interview — a company/interviewer research brief plus an interactive HTML flip-card deck — without ever overwriting an earlier round's materials. Use when someone has an upcoming interview and names a specific round to prep for (e.g. "I have an interview Thursday", "help me prep for the second round with Acme", "build my interview deck for the onsite"), or types "/interview-prep". Not for general job-search chatter, resume work, or applications with no interview scheduled.
 ---
 
 # Interview Prep
@@ -28,17 +28,31 @@ name for the rest of this skill.
 
 ## Locate the application folder
 
-1. Fuzzy-match the named company or role against the subfolder names under `{{APPLICATIONS_ROOT}}`.
-2. **Clear match** → that's the folder; continue to step 4. **Ambiguous between two folders** → ask
-   which one before continuing.
-3. **No match** → say so and ask — it may just be named differently. If the user confirms they
-   never built an application for this job, offer to create a **prep-only** package rather than
-   turning them away:
-   - **Job post** — take a URL or a paste. Fetch the URL; if the fetch fails (login wall,
-     JS-rendered page), say why it failed and ask for a paste of the posting text. Write
-     `job-post.md` with a provenance line — `provenance: user-supplied URL (<url>)` or
-     `provenance: user-pasted (<url>)`. If they decline to paste after a failed fetch, abort
-     cleanly: nothing created.
+1. **Job-post URL or pasted posting in the invocation?** If the argument starts `http://` or
+   `https://`, or posting text was pasted alongside the request, don't name-match it. Fetch the
+   URL first (one fetch — a paste needs none; on a failed fetch, carry on and note it, the paste
+   fallback in step 3c covers it) and extract the company and role, then go straight to the
+   folder question (step 3) with the extracted job named in it. This is the only fetch that may
+   happen before a folder is settled.
+2. Otherwise, fuzzy-match the named company or role against the subfolder names under
+   `{{APPLICATIONS_ROOT}}`. **Clear match** → that's the folder; continue to step 4. **Ambiguous
+   between two folders** → ask which one before continuing.
+3. **No match — or URL/paste entry from step 1** → ask the folder question, one question:
+   a. *"Is this job in one of your application folders, or does it not have one yet?"* — naming
+      the job when it's known (URL entry: the extracted company and role). List **every**
+      subfolder under `{{APPLICATIONS_ROOT}}` as a lettered list (A, B, C…), ending with the
+      option *"No folder yet — build a prep-only package."* Flag exactly one letter as
+      **recommended**: the folder that most resembles the job, or the no-folder option when
+      nothing does. Never present a lettered list without a recommendation.
+   b. **Picked a folder** → that's the folder; continue to step 4. Leave its files alone: the
+      folder's own `job-post.md` and `tailored-resume.md` stay the sources even when a URL was
+      fetched in step 1 — the fetched copy is set aside, never written over a package's files.
+   c. **No folder yet** → build a **prep-only** package:
+   - **Job post** — use the JD already fetched in step 1 rather than asking again. No URL was
+     given, or the fetch failed (login wall, JS-rendered page)? Say why and ask for a paste of
+     the posting text. Write `job-post.md` with a provenance line — `provenance: user-supplied
+     URL (<url>)` or `provenance: user-pasted (<url>)`. If they decline to paste and nothing was
+     fetched, abort cleanly: nothing created.
    - **Résumé** — list what exists and ask which to use: the master résumé if one is findable
      (recommend it), any `tailored-resume.md` from another application folder (with the caution
      that it was written for a different job's wording), or a file they paste or point to. Copy
