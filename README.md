@@ -84,6 +84,8 @@ So when the skill needs detail your resume doesn't hold, it asks you rather than
 offers to save your answers as a `career-notes.md` in that application folder. That file is optional
 and doesn't exist until you want it, but every later round in that folder gets better once it does.
 
+**If you prep before applying:** a prep-only folder is created under your applications root for that job. If you later build a real application package for the same job with a separate tool, it may not reuse that folder — check whether you end up with two folders for one pursuit, and move `research/`, the deck, and `career-notes.md` into the real package folder if you want everything in one place.
+
 ## See it before you run it
 
 [`skills/interview-prep/example/`](skills/interview-prep/example/) is a complete worked run — a
