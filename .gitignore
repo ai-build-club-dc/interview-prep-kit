@@ -1,0 +1,15 @@
+# Browser/daemon artifacts — these carry session tokens and absolute local paths
+.gstack/
+.claude/
+*.log
+
+# Your real prep folders and career notes never belong in this repo
+career-notes.md
+interviews/
+prep/
+*-private.md
+*.local.md
+
+# OS noise
+.DS_Store
+Thumbs.db
