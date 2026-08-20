@@ -18,7 +18,8 @@ literal `{{APPLICATIONS_ROOT}}` text in this file with a real path, then refer t
 name for the rest of this skill.
 
 - **Applications root** — `{{APPLICATIONS_ROOT}}`. Default: `~/applications/`. One folder per job
-  application lives directly under it, each already holding two files the user wrote herself —
+  application lives directly under it, each usually already holding two files the user wrote
+  herself (the prep-only path in step 3 can also create one) —
   `tailored-resume.md` (the resume tailored for that job) and `job-post.md` (the posting). This
   skill writes generated prep into that same folder, alongside them.
 - **Deck engine** — `templates/deck.html`, the flip-card CSS/JS structure to copy and fill.
@@ -30,9 +31,24 @@ name for the rest of this skill.
 1. Fuzzy-match the named company or role against the subfolder names under `{{APPLICATIONS_ROOT}}`.
 2. **Clear match** → that's the folder; continue to step 4. **Ambiguous between two folders** → ask
    which one before continuing.
-3. **No match** → stop and ask. Do not create a folder — these are created by the user when she
-   applies, so a missing one means she named it differently or hasn't applied there yet, and
-   inventing one puts the prep somewhere she'll never look.
+3. **No match** → say so and ask — it may just be named differently. If the user confirms they
+   never built an application for this job, offer to create a **prep-only** package rather than
+   turning them away:
+   - **Job post** — take a URL or a paste. Fetch the URL; if the fetch fails (login wall,
+     JS-rendered page), say why it failed and ask for a paste of the posting text. Write
+     `job-post.md` with a provenance line — `provenance: user-supplied URL (<url>)` or
+     `provenance: user-pasted (<url>)`. If they decline to paste after a failed fetch, abort
+     cleanly: nothing created.
+   - **Résumé** — list what exists and ask which to use: the master résumé if one is findable
+     (recommend it), any `tailored-resume.md` from another application folder (with the caution
+     that it was written for a different job's wording), or a file they paste or point to. Copy
+     the choice into the new folder as `tailored-resume.md` so every later step works unchanged.
+   - **Folder** — create `{{APPLICATIONS_ROOT}}/<Company>-<Role>/` (same naming convention as
+     the existing folders) holding `job-post.md`, the résumé copy, and a `notes.md` that begins
+     `status: prep-only (no application package)` with a `resume_source:` line recording where
+     the résumé copy actually came from — the copy must never pass as a résumé tailored and
+     checked for this specific job.
+   Then continue to step 4 as if the folder had been found.
 
 ## Verify the source files — never ask for the job description
 
@@ -40,7 +56,8 @@ name for the rest of this skill.
    matched folder. If either is missing, say which one and stop. If `notes.md` exists and begins
    with an `INCOMPLETE` marker, stop and say so — the application's build never finished, so
    `tailored-resume.md` was never checked and the deck would be built from unverified claims.
-   `job-post.md` is already there — never ask the user to paste or link the job description.
+   `job-post.md` is already there — for a prep-only folder it was just written in step 3 — so
+   never ask for the job description here.
 
 ## tailored-resume.md is the facts source, and its limits
 
@@ -141,7 +158,8 @@ name for the rest of this skill.
 
 ## Wrap
 
-20. Summarize: which application folder, which round, the filename just written, whether a prior
+20. Summarize: which application folder (and whether it was created prep-only this run), which
+    round, the filename just written, whether a prior
     debrief changed round-N emphasis (round 2+), whether `company-context.md` was created or appended
     to, whether the research layer fired and on whom, whether any STAR detail was requested and saved
     to `career-notes.md`, and the self-check findings from step 19, split into its two groups.
