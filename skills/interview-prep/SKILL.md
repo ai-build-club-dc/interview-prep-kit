@@ -37,8 +37,10 @@ name for the rest of this skill.
 ## Verify the source files — never ask for the job description
 
 4. Before doing anything else, confirm both `tailored-resume.md` and `job-post.md` exist in the
-   matched folder. If either is missing, say which one and stop. `job-post.md` is already there —
-   never ask the user to paste or link the job description.
+   matched folder. If either is missing, say which one and stop. If `notes.md` exists and begins
+   with an `INCOMPLETE` marker, stop and say so — the application's build never finished, so
+   `tailored-resume.md` was never checked and the deck would be built from unverified claims.
+   `job-post.md` is already there — never ask the user to paste or link the job description.
 
 ## tailored-resume.md is the facts source, and its limits
 
