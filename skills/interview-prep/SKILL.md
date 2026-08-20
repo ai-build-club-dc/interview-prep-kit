@@ -13,13 +13,14 @@ claim to cover a job-description keyword.
 
 ## Configuration
 
-**Edit the value below by hand before first use.** Nothing substitutes it for you — replace the
-literal `{{APPLICATIONS_ROOT}}` text in this file with a real path, then refer to that setting by
-name for the rest of this skill.
+**Edit the value below by hand before first use.** Nothing substitutes it for you — set the
+**Applications root** bullet below to your real path (no trailing slash), then refer to that
+setting by name for the rest of this skill.
 
-- **Applications root** — `{{APPLICATIONS_ROOT}}`. Default: `~/applications/`. One folder per job
-  application lives directly under it, each usually already holding two files the user wrote
-  herself (the prep-only path in step 3 can also create one) —
+- **Applications root** — `{{APPLICATIONS_ROOT}}` (no trailing slash). Default: `~/applications`.
+  Using the job-scan-console workshop repo? Your applications root is `<your clone>/applications`.
+  One folder per job application lives directly under it, each usually already holding two files
+  the user wrote herself (the prep-only path in step 3 can also create one) —
   `tailored-resume.md` (the resume tailored for that job) and `job-post.md` (the posting). This
   skill writes generated prep into that same folder, alongside them.
 - **Deck engine** — `templates/deck.html`, the flip-card CSS/JS structure to copy and fill.
@@ -93,7 +94,10 @@ name for the rest of this skill.
    with an explicit "don't know yet" option, the interview type from the lettered list below, and
    anything else you're missing — never a series of separate prompts. Flag exactly one type letter
    as recommended, keyed to the round: round 1 → A, round 2 → B, later rounds → judgment from
-   what's known. Skip whatever's already been stated — "prep me for my recruiter screen" has
+   what's known. When the round itself isn't known yet either, key the recommendation to what the
+   folder shows instead: no existing `interview-prep*.html` deck → assume round 1 (recommend
+   A · Recruiter screen); otherwise recommend by the next round number implied by the decks
+   already there. Skip whatever's already been stated — "prep me for my recruiter screen" has
    already answered the type. The medium (phone/video/onsite) stays optional — take it if
    offered, never chase it.
 
@@ -122,6 +126,9 @@ name for the rest of this skill.
     round-N emphasis — what landed, what didn't, what to hit harder — and correct or drop any stale
     researched claim it contradicts rather than presenting both as equally live. This skill reads
     debriefs; it never writes them — debrief authoring happens after the round and is the user's own.
+    Prior-round feedback given in chat instead of in a file — "they pushed hard on X" — carries the
+    same first-hand weight as a debrief file and drives round-N emphasis the same way; the skill
+    still never writes a debrief file from it, the user's words are used directly.
 
 ## Research layer — the company always, the interviewer when named
 
@@ -166,6 +173,10 @@ name for the rest of this skill.
     name the gap instead. Weight the card mix by the interview type's emphasis line from step 7,
     and show the type in the deck header beside the round. A named interviewer sharpens the deck
     further — the dossier's probable questions and the type's defaults compose; they don't compete.
+    When the folder also holds a `facts.md`-derived `gap-analysis.md` or the registry itself is
+    available, those may INFORM framing (e.g. which gaps to name first), but deck claims still trace
+    ONLY to this folder's `tailored-resume.md` (+ `career-notes.md`) — a fact that lives only in the
+    registry (e.g. self-reported, never surfaced in the résumé) does NOT become a deck claim.
     Write to the filename fixed in step 9.
 18. Verify it renders before handing it over. The deck is interactive, self-contained HTML — confirm
     the cards actually flip and the reference panels expand, by opening it in a browser or serving
@@ -175,7 +186,7 @@ name for the rest of this skill.
 
 19. There is no script to run here — read the finished deck end to end and trace every number and
     factual claim back to `tailored-resume.md` (and `career-notes.md` where used). Report anything
-    that doesn't trace, split into two groups:
+    that doesn't trace, split into three groups:
     - **Career-fact findings** — the user's own titles, metrics, dates, credentials. These are the
       ones that matter; flag every one.
     - **Company-side figures** — the employer's funding, headcount, market size, salary bands, and
@@ -183,6 +194,9 @@ name for the rest of this skill.
       `job-post.md` itself, not the user's claims, and don't need to trace to the resume — cite where
       each came from (`company-context.md` or `job-post.md`) and move on. Don't let this group's
       volume bury the career-fact findings.
+    - **Derived-analysis findings** — an analysis derived from and quoted out of the folder's own
+      files (e.g. a `gap-analysis.md` tally) is cited to that file: it's the package's own judgment,
+      neither the candidate's claim nor a public figure.
     - A posting's stated experience requirement (e.g. "2-5 years") belongs in the company-side group
       even though it reads like a number about the candidate — it's the posting's number, not theirs.
 
@@ -192,4 +206,4 @@ name for the rest of this skill.
     round and interview type, the filename just written, whether a prior
     debrief changed round-N emphasis (round 2+), whether `company-context.md` was created or appended
     to, whether the research layer fired and on whom, whether any STAR detail was requested and saved
-    to `career-notes.md`, and the self-check findings from step 19, split into its two groups.
+    to `career-notes.md`, and the self-check findings from step 19, split into its three groups.
